@@ -23,3 +23,10 @@ spec:
             name: referral-service
             port:
               number: 80
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-app
+            port:
+              number: 80
