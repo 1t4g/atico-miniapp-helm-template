@@ -1,4 +1,4 @@
 apiVersion: v2
-name: my-microservices-chart
+name: atico-miniapp-chart
 description: GCP Telegram Miniapp powered by Spring Boot Microservices, Anigular, RabbitMQ, MongoDB.
 version: 0.1.0
