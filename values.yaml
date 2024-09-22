@@ -1,0 +1,91 @@
+
+global:
+  imagePullPolicy: IfNotPresent
+  storageClass: standard
+
+# Auth сервис
+Service1:
+  replicaCount: 1
+  image:
+    repository: gcr.io/[PROJECT_ID]/auth-service
+    tag: latest
+  resources:
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+  service:
+    type: ClusterIP
+    port: 8081
+
+# Referral сервис
+Service2:
+  replicaCount: 1
+  image:
+    repository: gcr.io/[PROJECT_ID]/referral-service
+    tag: latest
+  resources:
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+    requests:
+      memory: "256Mi"
+      cpu: "250m"
+  service:
+    type: ClusterIP
+    port: 8082
+
+# Frontend Angular
+frontend:
+  replicaCount: 2
+  image:
+    repository: gcr.io/[PROJECT_ID]/frontend-app
+    tag: latest
+  resources:
+    limits:
+      memory: "256Mi"
+      cpu: "250m"
+    requests:
+      memory: "128Mi"
+      cpu: "100m"
+  service:
+    type: LoadBalancer
+    port: 80
+
+# MongoDB
+mongodb:
+  replicaCount: 1
+  image:
+    repository: mongo
+    tag: latest
+  storage:
+    size: 10Gi
+    storageClassName: "{{ .Values.global.storageClass }}"
+  resources:
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+
+# RabbitMQ
+rabbitmq:
+  replicaCount: 1
+  image:
+    repository: rabbitmq:3-management
+  storage:
+    size: 10Gi
+    storageClassName: "{{ .Values.global.storageClass }}"
+  service:
+    port: 5672
+    managementPort: 15672
+  resources:
+    limits:
+      memory: "1Gi"
+      cpu: "500m"
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
