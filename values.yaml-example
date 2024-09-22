@@ -23,7 +23,7 @@ mongodb:
   password: pass
   storage:
     size: 10Gi
-    storageClassName: standart
+    storageClassName: mongovolume
 
 rabbitmq:
   host: rabbitmq-service
@@ -32,4 +32,4 @@ rabbitmq:
   password: guest
   storage: 
     size: 10Gi
-    storageClassName: standart
+    storageClassName: rabbitvolume
