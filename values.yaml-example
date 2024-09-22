@@ -21,9 +21,15 @@ mongodb:
   port: 27017
   username: user
   password: pass
+  storage:
+    size: 10Gi
+    storageClassName: standart
 
 rabbitmq:
   host: rabbitmq-service
   port: 5672
   username: guest
   password: guest
+  storage: 
+    size: 10Gi
+    storageClassName: standart
