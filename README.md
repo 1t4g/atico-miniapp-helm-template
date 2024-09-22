@@ -30,6 +30,6 @@ Angular приложение, которое предоставляет инте
 Убедитесь, что образы ваших микросервисов и frontend опубликованы в Google Artifact Registry:
 ```bash
 gcloud auth configure-docker
-docker push gcr.io/[PROJECT_ID]/auth-service
-docker push gcr.io/[PROJECT_ID]/referral-service
+docker push gcr.io/[PROJECT_ID]/service1
+docker push gcr.io/[PROJECT_ID]/service2
 docker push gcr.io/[PROJECT_ID]/frontend-app
