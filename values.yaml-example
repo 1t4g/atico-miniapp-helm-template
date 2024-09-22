@@ -1,0 +1,29 @@
+replicaCount: 2
+
+example1Service:
+  image:
+    repository: gcr.io/[PROJECT_ID]/service1
+    tag: latest
+  service:
+    type: LoadBalancer
+    port: 8081
+
+example2Service:
+  image:
+    repository: gcr.io/[PROJECT_ID]/service2
+    tag: latest
+  service:
+    type: LoadBalancer
+    port: 8082
+
+mongodb:
+  host: mongodb-service
+  port: 27017
+  username: user
+  password: pass
+
+rabbitmq:
+  host: rabbitmq-service
+  port: 5672
+  username: guest
+  password: guest
